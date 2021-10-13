@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artikel{% endblock %}
+
+{% block body %}
+    <h1>Artikel</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ artikel.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ artikel.title }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ artikel.content }}</td>
+            </tr>
+            <tr>
+                <th>Created_on</th>
+                <td>{{ artikel.createdOn ? artikel.createdOn|date('Y-m-d H:i:s T') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Update_on</th>
+                <td>{{ artikel.updateOn ? artikel.updateOn|date('Y-m-d H:i:s T') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('artikel_index') }}">back to list</a>
+
+    <a href="{{ path('artikel_edit', {'id': artikel.id}) }}">edit</a>
+
+    {{ include('artikel/_delete_form.html.twig') }}
+{% endblock %}

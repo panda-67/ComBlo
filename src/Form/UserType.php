@@ -25,6 +25,8 @@ class UserType extends AbstractType
                     'Admin' => 'ROLE_ADMIN',
                 ],
             ])
+            ->add('date_of_birth')
+            ->add('phone')
             ->add('password')
         ;
         $builder->get('roles')

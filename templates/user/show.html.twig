@@ -21,7 +21,7 @@
 				</tr>
 				<tr>
 					<th>Password</th>
-					<td>{{ user.password }}</td>
+					<td>{{ user.password|u.truncate(10, '...') }}</td>
 				</tr>
 			</tbody>
 		</table>
