@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\CallbackTransformer;
 
@@ -25,7 +26,8 @@ class UserType extends AbstractType
                     'Admin' => 'ROLE_ADMIN',
                 ],
             ])
-            ->add('date_of_birth')
+            ->add('date_of_birth', DateType::class, [
+                'widget' => 'single_text',])
             ->add('phone')
             ->add('password')
         ;
@@ -44,9 +46,7 @@ class UserType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-        //     'empty_data' => function (FormInterface $form) {
-        //         return new User($form->get('')->getData());
-        //     },
+            
         ]);
     }
 }

@@ -99,7 +99,7 @@ class User implements UserInterface
         return $this->password;
     }
 
-    public function setPassword(?string $password): self
+    public function setPassword(string $password): self
     {
         $this->password = $password;
 

@@ -3,44 +3,52 @@
 	{% block title %}Log in!{% endblock %}
 
 	{% block body %}
-		<form method="post">
-			{% if error %}
-				<div class="alert alert-error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-			{% endif %}
 
-			{% if app.user %}
-				<div class="mb-3">
-					You are logged in as {{ app.user.username }},
-					<a href="{{ path('app_logout') }}">Logout</a>
+		<div class="hero">
+			<div class="flex-col justify-center hero-content">
+				{% if app.user %}
+					<div class="mb-3 font-bold">
+						You are logged in as
+						<span class="text-accent-focus">{{ app.user.username }}</span>,
+						<a class="link btn-link link-accent link-hover" href="{{ path('app_logout') }}">LOGOUT</a>
+					</div>
+				{% endif %}
+
+				<div class="card flex-shrink-0 w-full max-w-sm shadow-md hover:shadow-2xl bg-base-100">
+					<form method="post">
+						<div class="card-body">
+							<h1 class="mb-3 font-bold">Please sign in</h1>
+							<div class="form-control mb-3">
+								<label for="inputEmail">Email</label>
+								<input type="email" value="{{ last_username }}" placeholder="email" name="email" id="inputEmail" class="input input-sm input-accent input-bordered" autocomplete="email" required autofocus>
+							</div>
+							<div class="form-control mb-3">
+								<label for="inputPassword">Password</label>
+								<input type="password" name="password" placeholder="password" id="inputPassword" class="input input-sm input-accent input-bordered" autocomplete="current-password" required>
+								<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+								<label class="label">
+									<a href="#" class="label-text-alt">Forgot password?</a>
+								</label>
+							</div>
+							{% if error %}
+								<div class="pr-5 alert alert-error alert-sm flex justify-start">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" class="w-5 h-5 mx-2 stroke-current">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+									</svg>
+									{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+							{% endif %}
+							<div class="form-control mt-2">
+								<button class="btn btn-sm btn-accent btn-outline my-2" type="submit">Sign in</button>
+							</div>
+							<div class="mb-1 w-max">
+								<label class="text-xs flex items-center">
+									<input type="checkbox" checked="checked" class="mx-1 checkbox checkbox-accent checkbox-xs" name="_remember_me"> Remember me
+								</label>
+							</div>
+						</div>
+					</form>
 				</div>
-			{% endif %}
-
-			<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-			<div class="flex">
-				<label for="inputEmail">Email</label>
-				<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="input input-sm input-accent input-bordered" autocomplete="email" required autofocus>
 			</div>
-			<div class=" flex">
-				<label for="inputPassword">Password</label>
-				<input type="password" name="password" id="inputPassword" class="input input-sm input-accent input-bordered" autocomplete="current-password" required>
-			</div>
-
-			<input
-			type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-			{#
-																		        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-																		        See https://symfony.com/doc/current/security/remember_me.html
-																		
-																		        <div class="checkbox mb-3">
-																		            <label>
-																		                <input type="checkbox" name="_remember_me"> Remember me
-																		            </label>
-																		        </div>
-																		    #}
-
-			<button class="btn btn-sm btn-accent my-2" type="submit">
-				Sign in
-			</button>
-		</form>
+		</div>
+		{# Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.See https://symfony.com/doc/current/security/remember_me.html #}
 	{% endblock %}

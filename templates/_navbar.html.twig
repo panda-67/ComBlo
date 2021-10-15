@@ -1,23 +1,44 @@
 <div class="navbar mb-2 shadow-lg bg-accent text-neutral-content">
-		<div class="px-2 mx-2 navbar-start">
-			<span class="text-xl font-extrabold">
-				COMblo
-			</span>
+		<div class="px-2 mx-2 navbar-start flex items-center">
+			<div class="mr-1 dropdown dropdown-start lg:hidden">
+				<div tabindex="0" class="btn btn-ghost btn-sm rounded-btn">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" class="inline-block w-6 h-6 stroke-current">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+					</svg>
+				</div>
+				<ul tabindex="0" class="p-2 flex items-stretch shadow menu dropdown-content bg-base-100 text-accent rounded-box w-28">
+					<li>
+						<a class="my-1 link link-hover link-accent btn-sm btn-link" href="{{ path('home') }}">Home</a>
+					</li>
+					<li>
+						<a class="my-1 link link-hover link-accent btn-sm btn-link" href="{{ path('artikel_index') }}">Feeds</a>
+					</li>
+					<li>
+						<a class="my-1 link link-hover link-accent btn-sm btn-link" href="{{ path('user_index') }}">About</a>
+					</li>
+					<li>
+						<a class="my-1 link link-hover link-accent btn-sm btn-link" href="">Contact</a>
+					</li>
+					<li class="border-t-2 border-accent mt-2">
+						<a class="mt-1 uppercase link link-hover link-accent btn-xs btn-link" href="{{ path('app_login') }}">Login</a>
+					</li>
+					<li>
+						<a class="mb-1 uppercase link link-hover link-accent btn-xs btn-link" href="{{ path('app_logout') }}">Logout</a>
+					</li>
+				</ul>
+			</div>
+			<div class="text-xl font-extrabold my-2">
+				<span>
+					COMblo
+				</span>
+			</div>
 		</div>
 		<div class="hidden px-2 mx-2 navbar-center lg:flex">
 			<div class="flex items-stretch">
-				<a class="btn btn-ghost btn-sm rounded-btn" href="">
-					Home
-				</a>
-				<a class="btn btn-ghost btn-sm rounded-btn" href="{{ path('user_index') }}">
-					Feeds
-				</a>
-				<a class="btn btn-ghost btn-sm rounded-btn" href="">
-					About
-				</a>
-				<a class="btn btn-ghost btn-sm rounded-btn" href="">
-					Contact
-				</a>
+				<a class="btn btn-ghost btn-sm rounded-btn" href="{{ path('home') }}">Home</a>
+				<a class="btn btn-ghost btn-sm rounded-btn" href="{{ path('artikel_index') }}">Feeds</a>
+				<a class="btn btn-ghost btn-sm rounded-btn" href="{{ path('user_index') }}">About</a>
+				<a class="btn btn-ghost btn-sm rounded-btn" href="">Contact</a>
 			</div>
 		</div>
 		<div class="navbar-end">
@@ -36,13 +57,16 @@
 					</button>
 				</div>
 			</div>
-			<div class="flex items-stretch">
-				<a class="btn btn-ghost btn-sm rounded-btn" href="{{ path('app_login') }}">
-					Login
-				</a>
-				<a class="btn btn-ghost btn-sm rounded-btn" href="{{ path('app_logout') }}">
-					Logout
-				</a>
+			<div class="dropdown dropdown-end hidden lg:flex">
+				<div tabindex="0" class="btn btn-ghost btn-sm rounded-btn">Auth</div>
+				<ul tabindex="0" class="p-2 flex items-stretch shadow menu dropdown-content bg-base-100 text-accent rounded-box w-28">
+					<li>
+						<a class="mt-1 uppercase link link-hover link-accent btn-sm btn-link" href="{{ path('app_login') }}">Login</a>
+					</li>
+					<li>
+						<a class="mb-1 uppercase link link-hover link-accent btn-sm btn-link" href="{{ path('app_logout') }}">Logout</a>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>

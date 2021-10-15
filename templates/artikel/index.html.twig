@@ -3,39 +3,39 @@
 	{% block title %}Artikel index{% endblock %}
 
 	{% block body %}
-		<h1>Artikel index</h1>
-
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Title</th>
-					<th>Content</th>
-					<th>Created_on</th>
-					<th>Update_on</th>
-					<th>actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for artikel in artikels %}
+		<div class="flex items-center flex-col">
+			<h1 class="m-2 py-2 font-bold text-accent uppercase">Artikel index</h1>
+			<table class="table table-compact table-zebra w-full">
+				<thead>
 					<tr>
-						<td>{{ artikel.id }}</td>
-						<td>{{ artikel.title }}</td>
-						<td>{{ artikel.content }}</td>
-						<td>{{ artikel.createdOn ? artikel.createdOn|date('\\U\\T\\C T - F jS, Y ', 'Asia/Bangkok') : '' }}</td>
-						<td>{{ artikel.updateOn ? artikel.updateOn|date('F jS, Y \\a\\t g:i a', 'Asia/Bangkok') : '' }}</td>
-						<td>
-							<a href="{{ path('artikel_show', {'id': artikel.id}) }}">show</a>
-							<a href="{{ path('artikel_edit', {'id': artikel.id}) }}">edit</a>
-						</td>
+						<th>Id</th>
+						<th>Judul</th>
+						<th>Konten</th>
+						<th>Ditulis pada  [UTC+7:00]</th>
+						<th>Diedit pada  [UTC+7:00]</th>
+						<th>actions</th>
 					</tr>
-				{% else %}
-					<tr>
-						<td colspan="6">no records found</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-
-		<a href="{{ path('artikel_new') }}">Create new</a>
+				</thead>
+				<tbody>
+					{% for artikel in artikels %}
+						<tr class="hover">
+							<td>{{ artikel.id }}</td>
+							<td>{{ artikel.title }}</td>
+							<td>{{ artikel.content|u.truncate(50, '...') }}</td>
+							<td>{{ artikel.createdOn ? artikel.createdOn|date('F jS, Y', 'Asia/Bangkok') : '' }}</td>
+							<td>{{ artikel.updateOn ? artikel.updateOn|date('F jS, Y \\a\\t g:i a', 'Asia/Bangkok') : '' }}</td>
+							<td class="flex flex-row">
+								<a class="btn btn-xs btn-link link-accent link-hover -ml-3" href="{{ path('artikel_show', {'id': artikel.id}) }}">show</a>
+								<a class="btn btn-xs btn-link link-accent link-hover" href="{{ path('artikel_edit', {'id': artikel.id}) }}">edit</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="6">no records found</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<a class="mt-4 btn btn-sm btn-accent btn-outline" href="{{ path('artikel_new') }}">Create new</a>
 	{% endblock %}

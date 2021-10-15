@@ -17,7 +17,8 @@
 		</head>
 		<body>
 			{{ include('_navbar.html.twig') }}
-			<div class="m-2 py-4 px-8"> {% block body %}{% endblock %}
+			<div class=""> {% block body %}{% endblock %}
 				</div>
+				{{ include('_footer.html.twig') }}
 			</body>
 		</html>

@@ -9,7 +9,9 @@
         "doctrine/doctrine-bundle": "^2.4",
         "doctrine/doctrine-migrations-bundle": "^3.1",
         "doctrine/orm": "^2.10",
+        "knplabs/knp-paginator-bundle": "^5.7",
         "sensio/framework-extra-bundle": "^6.2",
+        "symfony/apache-pack": "^1.0",
         "symfony/console": "4.4.*",
         "symfony/doctrine-bridge": "4.4.*",
         "symfony/dotenv": "4.4.*",
@@ -27,7 +29,8 @@
     },
     "require-dev": {
         "symfony/maker-bundle": "^1.34",
-        "symfony/stopwatch": "4.4.*"
+        "symfony/stopwatch": "4.4.*",
+        "symfony/web-profiler-bundle": "4.4.*"
     },
     "config": {
         "preferred-install": {

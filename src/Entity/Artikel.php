@@ -74,6 +74,7 @@ class Artikel
     public function setCreatedOn(\DateTimeInterface $created_on): self
     {
         $this->created_on = $created_on;
+        // date_create();
 
         return $this;
     }

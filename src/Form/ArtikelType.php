@@ -7,7 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+ 
 class ArtikelType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -17,9 +18,11 @@ class ArtikelType extends AbstractType
             ->add('content')
             ->add('created_on', DateType::class, [
                 'widget' => 'single_text',
-                'input'  => 'datetime'
+                'input'  => 'datetime',
+                
             ])
-            ->add('update_on')
+            ->add('update_on', DateType::class, [
+                'input' => 'datetime',])
         ;
     }
 

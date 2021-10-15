@@ -5,7 +5,10 @@
 	{% block body %}
 		<h1>Create new User</h1>
 
-		{{ include('user/_form.html.twig') }}
+		{{ form_start(form) }}
+		{{ form_row(form.email, {'attr': {'class': 'my-1 input input-sm input-accent input-bordered', 'placeholder': 'email'}}) }} {{ form_row(form.roles, {'attr': {'class': 'select select-sm select-bordered select-accent w-28 '}}) }} {{ form_row(form.password, {'attr': {'class': 'my-1 input input-sm input-accent input-bordered', 'placeholder': 'password'}}) }} {{ form_row(form._token) }}
+		<button class="btn btn-sm btn-accent btn-outline">{{ button_label|default('Save') }}</button>
+		{{ form_end(form, {render_rest: false}) }}
 
 		<a href="{{ path('user_index') }}">back to list</a>
 	{% endblock %}
