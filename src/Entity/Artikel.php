@@ -28,6 +28,11 @@ class Artikel
     private $content;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $coverFilename;
+
+    /**
      * @ORM\Column(type="datetimetz")
      */
     private $created_on;
@@ -36,6 +41,16 @@ class Artikel
      * @ORM\Column(type="datetimetz")
      */
     private $update_on;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $harga;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $harga_d;
 
     public function getId(): ?int
     {
@@ -62,6 +77,18 @@ class Artikel
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getCoverFilename(): string
+    {
+        return $this->coverFilename;
+    }
+
+    public function setCoverFilename(string $coverFilename): self
+    {
+        $this->coverFilename = $coverFilename;
 
         return $this;
     }
@@ -94,6 +121,30 @@ class Artikel
     {
         // $this->update_on = $update_on;
         $this->update_on = new \DateTime("now");
+
+        return $this;
+    }
+
+    public function getHarga(): ?string
+    {
+        return $this->harga;
+    }
+
+    public function setHarga(?string $harga): self
+    {
+        $this->harga = $harga;
+
+        return $this;
+    }
+
+    public function getHargaD(): ?string
+    {
+        return $this->harga_d;
+    }
+
+    public function setHargaD(?string $harga_d): self
+    {
+        $this->harga_d = $harga_d;
 
         return $this;
     }

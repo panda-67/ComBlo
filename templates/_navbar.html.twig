@@ -19,12 +19,6 @@
 					<li>
 						<a class="my-1 link link-hover link-accent btn-sm btn-link" href="">Contact</a>
 					</li>
-					<li class="border-t-2 border-accent mt-2">
-						<a class="mt-1 uppercase link link-hover link-accent btn-xs btn-link" href="{{ path('app_login') }}">Login</a>
-					</li>
-					<li>
-						<a class="mb-1 uppercase link link-hover link-accent btn-xs btn-link" href="{{ path('app_logout') }}">Logout</a>
-					</li>
 				</ul>
 			</div>
 			<div class="text-xl font-extrabold my-2">
@@ -57,16 +51,12 @@
 					</button>
 				</div>
 			</div>
-			<div class="dropdown dropdown-end hidden lg:flex">
-				<div tabindex="0" class="btn btn-ghost btn-sm rounded-btn">Auth</div>
-				<ul tabindex="0" class="p-2 flex items-stretch shadow menu dropdown-content bg-base-100 text-accent rounded-box w-28">
-					<li>
-						<a class="mt-1 uppercase link link-hover link-accent btn-sm btn-link" href="{{ path('app_login') }}">Login</a>
-					</li>
-					<li>
-						<a class="mb-1 uppercase link link-hover link-accent btn-sm btn-link" href="{{ path('app_logout') }}">Logout</a>
-					</li>
-				</ul>
-			</div>
+
+			{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+				<a class="btn btn-ghost btn-sm rounded-btn" href="{{ path('app_logout') }}">Logout</a>
+			{% else %}
+				<a class="btn btn-ghost btn-sm rounded-btn" href="{{ path('app_login') }}">Login</a>
+			{% endif %}
+
 		</div>
 	</div>

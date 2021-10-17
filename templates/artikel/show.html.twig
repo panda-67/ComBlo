@@ -1,38 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Artikel{% endblock %}
+	{% block title %}Artikel{% endblock %}
 
-{% block body %}
-    <h1>Artikel</h1>
+	{% block body %}
+		<div class="m-8 p-4">
+			<h1>Artikel</h1>
+			<div class="m-5">
+				<div class="w-60 h-48 bg-center bg-gray-300 bg-cover bg-current bg-opacity-40" style="background-image: url('{{ asset('uploads/covers/' ~ artikel.coverFilename) }}'); background-blend-mode: multiply"></div>
+			</div>
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>Id</th>
+						<td>{{ artikel.id }}</td>
+					</tr>
+					<tr>
+						<th>Title</th>
+						<td>{{ artikel.title }}</td>
+					</tr>
+					<tr>
+						<th>Content</th>
+						<td>{{ artikel.content }}</td>
+					</tr>
+					<tr>
+						<th>Harga</th>
+						<td>{{ artikel.harga }}</td>
+					</tr>
+					<tr>
+						<th>Diskon</th>
+						<td>{{ artikel.hargaD }}</td>
+					</tr>
+					<tr>
+						<th>Created_on</th>
+						<td>{{ artikel.createdOn ? artikel.createdOn|date('Y-m-d H:i:s T') : '' }}</td>
+					</tr>
+					<tr>
+						<th>Update_on</th>
+						<td>{{ artikel.updateOn ? artikel.updateOn|date('Y-m-d H:i:s T') : '' }}</td>
+					</tr>
+				</tbody>
+			</table>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ artikel.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ artikel.title }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ artikel.content }}</td>
-            </tr>
-            <tr>
-                <th>Created_on</th>
-                <td>{{ artikel.createdOn ? artikel.createdOn|date('Y-m-d H:i:s T') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Update_on</th>
-                <td>{{ artikel.updateOn ? artikel.updateOn|date('Y-m-d H:i:s T') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+			<a class="btn btn-sm btn-info btn-outline" href="{{ path('artikel_index') }}">back to list</a>
 
-    <a href="{{ path('artikel_index') }}">back to list</a>
+			<a class="btn btn-sm btn-outline btn-warning" href="{{ path('artikel_edit', {'id': artikel.id}) }}">edit</a>
 
-    <a href="{{ path('artikel_edit', {'id': artikel.id}) }}">edit</a>
-
-    {{ include('artikel/_delete_form.html.twig') }}
-{% endblock %}
+			{% if is_granted('ROLE_ADMIN') %}
+				<div class="my-2">
+					{{ include('artikel/_delete_form.html.twig') }}
+				</div>
+			{% endif %}
+		</div>
+	{% endblock %}

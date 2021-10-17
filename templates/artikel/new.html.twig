@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Artikel{% endblock %}
+	{% block title %}New Artikel{% endblock %}
 
-{% block body %}
-    <h1>Create new Artikel</h1>
-
-    {{ include('artikel/_form.html.twig') }}
-
-    <a href="{{ path('artikel_index') }}">back to list</a>
-{% endblock %}
+	{% block body %}
+		<div class="bg-base p-7">
+			<div class="flex justify-center items-center flex-col">
+				<h1 class="text-xl font-bold">Form Artikel Baru</h1>
+				{{ include('artikel/_form.html.twig') }}
+				<div class="">
+					<a class="btn btn-sm btn-info btn-outline" href="{{ path('artikel_index') }}">back to list</a>
+				</div>
+			</div>
+		</div>
+	{% endblock %}

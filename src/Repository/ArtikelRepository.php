@@ -19,16 +19,23 @@ class ArtikelRepository extends ServiceEntityRepository
         parent::__construct($registry, Artikel::class);
     }
 
-    // /**
-    //  * @return Artikel[] Returns an array of Artikel objects
-    //  */
+    /**
+     * @return Artikel[] Returns an array of Artikel objects
+     */
+
+    // public function findAll()
+    // {
+    //     return $this->findBy([], ['created_on' => 'DESC'])
+    //     ;
+    // }
+
     /*
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')
             ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
+            ->orderBy('a.id', 'ASC')            
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()

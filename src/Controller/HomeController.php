@@ -24,13 +24,24 @@ class HomeController extends AbstractController
     // }
     public function index(ArtikelRepository $artikelRepository, PaginatorInterface $paginator, Request $request): Response 
     {   
+        
         $pagination = $paginator->paginate(
-            $artikelRepository->findAll(), /* query NOT result */
+            $artikelRepository->findBy([], ['created_on' => 'DESC']),/* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            3 /*limit per page*/
+            12 /*limit per page*/
         );
         return $this->render('home/index.html.twig', [
             'pagination' => $pagination,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="artikel_view", methods={"GET"})
+     */   
+    public function artikelView(Artikel $artikel): Response
+    {
+        return $this->render('home/artikel_view.html.twig', [
+            'artikel' => $artikel,
         ]);
     }
 }

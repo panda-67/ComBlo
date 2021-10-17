@@ -1,4 +1,37 @@
 {{ form_start(form) }}
-	{{ form_widget(form) }}
-	<button class="btn">{{ button_label|default('Save') }}</button>
+	<div class="flex flex-col">
+		{{ form_errors(form, {'attr': {'class': 'alert alert-warning'}}) }} {{ form_row(form._token) }}
+		<div class="mt-4">
+			{{ form_label(form.title, 'Judul', {'label_attr': {'class': 'font-bold'}}) }} {{ form_widget(form.title, {'attr': {'class': 'form-control py-1 px-2 border border-gray-300', 'placeholder': 'Judul'}}) }}
+		</div>
+		<div class="mt-4">
+			{{ form_label(form.content) }}
+			{{ form_widget(form.content, {'attr': {'class': 'form-control py-1 px-2 border border-gray-300'}}) }}
+		</div>
+		<div class="mt-4">
+			{{ form_label(form.cover) }}
+			{{ form_widget(form.cover, {'attr': {'class': 'form-control py-1 px-2 border border-gray-300 text-xs'}}) }}
+		</div>
+		<div class="flex">
+			<div class="mt-4 mr-4">
+				{{ form_label(form.harga) }}
+				{{ form_widget(form.harga, {'attr': {'class': 'form-control py-1 px-2 border border-gray-300', 'placeholder': '99.999'}}) }} {{ form_help(form.harga, {'attr': {'class': 'text-xs font-bold text-warning'}}) }}
+			</div>
+			<div class="mt-4">
+				{{ form_label(form.harga_d, 'Harga Diskon') }}
+				{{ form_widget(form.harga_d, {'attr': {'class': 'form-control py-1 px-2 border border-gray-300', 'placeholder': '49.999'}}) }}
+			</div>
+		</div>
+		<div class="flex">
+			<div class="mt-4 mr-4">
+				{{ form_label(form.created_on, 'Diposting pada') }}
+				{{ form_widget(form.created_on, {'attr': {'class': 'form-control py-1 px-2 border border-gray-300'}}) }}
+			</div>
+			<div class="mt-4">
+				{{ form_label(form.update_on, 'Diupdate pada') }}
+				{{ form_widget(form.update_on, {'attr': {'class': 'w-max py-1 px-2 border border-gray-300'}}) }}
+			</div>
+		</div>
+		<button class="btn btn-sm btn-accent btn-outline w-max mt-4">{{ button_label|default('Save') }}</button>
+	</div>
 	{{ form_end(form) }}

@@ -1,0 +1,17 @@
+# Read the documentation: https://symfony.com/doc/current/bundles/FOSCKEditorBundle/index.html
+fos_ck_editor:
+  autoload: true
+  # async: true
+  # inline: true
+  # auto_inline: true
+  input_sync: true
+  default_config: base_config
+  configs:
+    base_config:
+      toolbar:
+        standard
+        # full
+        # - { name: "styles", items: ["Bold", "Italic", "BulletedList", "Link"] }
+twig:
+  form_themes:
+    - "@FOSCKEditor/Form/ckeditor_widget.html.twig"

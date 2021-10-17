@@ -19,7 +19,10 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "ckeditor": "^4.12.1",
+        "ckeditor4": "^4.16.2",
         "daisyui": "^1.14.4",
+        "file-loader": "^6.2.0",
         "tailwindscss": "^0.3.0"
     }
 }
